@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html ng-app="wedding">
+    <head>
+        <title>Jenny &amp; Ryan</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- https://designshack.net/articles/css/10-great-google-font-combinations-you-can-copy/ -->
+        <!-- https://fonts.google.com/ -->
+        <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+        
+        <link href='http://fonts.googleapis.com/css?family=Rancho' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Gudea' rel='stylesheet' type='text/css'>
+        
+        <link href='http://fonts.googleapis.com/css?family=Flamenco' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script src="/app.js"></script>
+        <style>
+            /* FONTS */
+            h1, h2, h3 {
+                font-family: 'Flamenco', Georgia, Times, serif;
+            }
+            body {
+                font-family: 'Asap', Helvetica, Arial, sans-serif;
+                font-size: 15px;
+                line-height: 25px;
+            }
+            
+            /* EVERYTHING ELSE */
+            body {
+                position: relative;
+                background: url(/images/fabric_of_squares_gray.png) repeat 0 0;
+            }
+            
+            h1 {
+                font-size: 4em;
+            }
+            h2 {
+                font-size: 2em;
+            }
+
+            .wedding-heading {
+                padding-top: 50px;
+            }
+            #section1, #section2, #header-container {
+                padding-top:50px;
+            }
+            #header-container {
+                text-align: center;
+                /*                padding-top: 150px;*/
+                /*                padding-bottom: 50px;*/
+            }
+            #header-img {
+                position: absolute;
+                top: 50px;
+                filter: blur(2px);
+                width: 100%;
+                background-image: url(images/walled-garden2.jpg);
+                background-size: cover;
+                background-position: center;
+                display: block;
+                min-height: 350px;
+                z-index: -1;
+            }
+            #header-text {
+                font-size: 4em;
+                color: black;
+            }
+            #content {
+                text-align: center;
+            }
+            .img-caption {
+                text-align:center;
+                font-size: 1.1em;
+            }
+            .event-img {
+                margin-top: 10px;
+                text-align: center;
+                max-height: 300px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .infobox {
+                font-size: 1.2em;
+                width: 70%;
+                text-align: justify;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+        <script>
+            $(function() {
+                // Add smooth scrolling to all links inside a navbar
+                $(".navbar a[href^='#']").on('click', function(e) {
+
+                    // prevent default anchor click behavior
+                    e.preventDefault();
+
+                    // store hash
+                    var hash = this.hash;
+
+                    // animate
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 300, function(){
+
+                        // when done, add hash to url
+                        // (default click behaviour)
+                        window.location.hash = hash;
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body ng-controller="WeddingCtrl" id="top" data-spy="scroll" data-target=".navbar" data-offset="0">
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#top"><span class="glyphicon glyphicon-home"></span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li ng-repeat="section in sections"><a ng-href="#{{sectionIds[$index]}}">{{section}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="header-container">
+            <h1 id="header-text">Jenny &amp; Ryan</h1>
+            <div><i>Help us celebrate our wedding!</i></div>
+            <br/>
+            <img src="/images/us1.jpeg" width="40%" style="text-align:center;border: 1px black solid;" />
+            <img src="/images/us2.jpg" width="40%" style="text-align:center;border: 1px black solid;" />
+        </div>
+        <div id="content">
+            <div id="{{sectionIds[0]}}" class="wedding-heading container"> <!-- Details -->
+                <h1>{{sections[0]}}</h1>
+                <p class="infobox">
+                    Our wedding will be on <b>July 22, 2017</b>.
+                    We will have a short ceremony at the <b>Walled Garden at Mellon Park</b> starting at <b>4:00pm</b>.
+                    A reception at <b>The Union Project</b> will follow, beginning at <b>5:00pm</b>.
+                </p>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <img src="/images/walled-garden.jpg" class="event-img img-responsive img-rounded img-center" />
+                        <div class="img-caption">
+                            <div>Walled Garden @ Mellon Park </div>
+                            <div>
+                                <i>6227 Mellon Park Road, Pittsburgh, PA</i>
+                                <a href="https://goo.gl/maps/6F7vs4qW14k" target="_blank"><span class="glyphicon glyphicon-map-marker"></span></a>
+                            </div>
+                            <div>
+                                Street parking available on Beechwood
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <img src="/images/unionproject.jpg" class="event-img img-responsive img-rounded img-center" />
+                        <div class="img-caption">
+                            <div>The Union Project</div>
+                            <div>
+                                <i>801 N Negley Ave, Pittsburgh, PA</i>
+                                <a href="https://goo.gl/maps/YZn8dewsvMz" target="_blank"><span class="glyphicon glyphicon-map-marker"></span></a>
+                            </div>
+                            <div>
+                                Street parking available on Stanton &amp; Negley
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>(More)</h2>
+                <div class="infobox">
+                    <ul>
+                        <li>The Walled Garden has a lot of grass, and Pittsburgh in July can be rainy, so those-in-heels may want to take notice.</li>
+                        <li>The Union Project does not have air conditioning and Pittsburgh in July can get hot, so feel free to bring a change of clothes if you'd feel more comfortable.</li>
+                        <li>If it's sunny or there's light rain, we'll keep the ceremony outisde. If it's heavy rain, we will head to the Union Project for the ceremony and stay for the reception.</li>
+                        <li>To get between the ceremony and reception, we're hoping Uber and locals who are willing to share their seats will be enough. The two spots are about 2 miles apart.</li>
+                        <li>We will have vegetarian and gluten-free food options.</li>
+                        <li>There will be an open bar.</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="{{sectionIds[1]}}" class="wedding-heading container"> <!-- Travel -->
+                <h1>{{sections[1]}}</h1>
+                <div class="infobox">
+                    If you're not local, don't worry!
+                    <h3>By Air</h3>
+                    The <a href="" target="_blank">Pittsburgh "International" Airport</a> (yeah, we go to Canada. And maybe Paris?) is about twenty minutes outside the city. You can catch an Uber / Lyft / cab to the hotel. The 28X bus also stops at the aiport and drops off Downtown and in Oakland.
+                    <h3>By Train</h3>
+                    Our <a href="" target="_blank">Amtrak station</a> is located downtown and connects to the Pennsylvanian line (Philadelphia, NYC) and the Capital Limited line (Chicago, DC). It's very relaxing.
+                    <h3>By Car</h3>
+                    Well, we're not sure how helpful we can be here, but if you do drive, make sure you head through the Fort Pitt Tunnel. It's the <a href="https://youtu.be/Ci_rwQoRaxk?t=52s" target="_blank">best intro</a> to the city.
+                    <h3>Staying in PGH</h3>
+                    We've reserved a block of rooms at <a href="" target="_blank">Such &amp; Such Hotel</a>, right around the corner from The Union Project. Ace Hotel? Hotel Indigo? SpringHill Suites?
+                </div>
+            </div>
+
+            <div id="{{sectionIds[2]}}" class="wedding-heading container"> <!-- Burgh -->
+                <h1>{{sections[2]}}</h1>
+                <div class="infobox">
+                    Here's some of our favorite things to do in the city.
+                    <h3>Foods</h3>
+                    <ul>
+                        <li>D's Six Pack and Dogz</li>
+                        <li>Nikki's Thai Kitchen</li>
+                        <li>Pamela's Dinner</li>
+                    </ul>
+                    <h3>Drinks</h3>
+                    <ul>
+                        <li>Yummy drinks</li>
+                    </ul>
+                    <h3>Places</h3>
+                    <ul>
+                        <li>Natural History Museum</li>
+                        <li>The Warhol</li>
+                        <li>Aviary</li>
+                        <li>Mattress Factory</li>
+                        <li>Frick Park</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="{{sectionIds[3]}}" class="wedding-heading container"> <!-- Registry -->
+                <h1>{{sections[3]}}</h1>
+                <div class="infobox">
+                    We're registered on Amazon. We'd also be plenty happy with cash. But really, we just want you to be there (aww).
+                </div>
+            </div>
+            <div id="{{sectionIds[4]}}" class="wedding-heading container"> <!-- RSVP -->
+                <h1>{{sections[4]}}</h1>
+                <div class="infobox">
+                    <p><b>Embedded Google Form?</b></p>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
