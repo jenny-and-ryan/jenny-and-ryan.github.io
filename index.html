@@ -6,97 +6,44 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- https://designshack.net/articles/css/10-great-google-font-combinations-you-can-copy/ -->
+        <!-- http://fontpair.co/ -->
         <!-- https://fonts.google.com/ -->
         <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
-        
+
         <link href='http://fonts.googleapis.com/css?family=Rancho' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Gudea' rel='stylesheet' type='text/css'>
-        
+
         <link href='http://fonts.googleapis.com/css?family=Flamenco' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>
 
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <!--
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="/bower_components/angular-masonry/angular-masonry.js"></script>
+-->
+
+        <script src="/bower_components/jquery/dist/jquery.js"></script>
+        <script src="/bower_components/jquery-bridget/jquery-bridget.js"></script>
+        <script src="/bower_components/ev-emitter/ev-emitter.js"></script>
+        <script src="/bower_components/desandro-matches-selector/matches-selector.js"></script>
+        <script src="/bower_components/fizzy-ui-utils/utils.js"></script>
+        <script src="/bower_components/get-size/get-size.js"></script>
+        <script src="/bower_components/outlayer/item.js"></script>
+        <script src="/bower_components/outlayer/outlayer.js"></script>
+        <script src="/bower_components/masonry/masonry.js"></script>
+        <script src="/bower_components/imagesloaded/imagesloaded.js"></script>
+        <script src="/bower_components/angular/angular.js"></script>
+        <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+        <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+        <script src="/bower_components/angular-masonry/angular-masonry.js"></script>
+        <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
         <script src="/app.js"></script>
-        <style>
-            /* FONTS */
-            h1, h2, h3 {
-                font-family: 'Flamenco', Georgia, Times, serif;
-            }
-            body {
-                font-family: 'Asap', Helvetica, Arial, sans-serif;
-                font-size: 15px;
-                line-height: 25px;
-            }
-            
-            /* EVERYTHING ELSE */
-            body {
-                position: relative;
-                background: url(/images/fabric_of_squares_gray.png) repeat 0 0;
-            }
-            
-            h1 {
-                font-size: 4em;
-            }
-            h2 {
-                font-size: 2em;
-            }
-
-            .wedding-heading {
-                padding-top: 50px;
-            }
-            #section1, #section2, #header-container {
-                padding-top:50px;
-            }
-            #header-container {
-                text-align: center;
-                /*                padding-top: 150px;*/
-                /*                padding-bottom: 50px;*/
-            }
-            #header-img {
-                position: absolute;
-                top: 50px;
-                filter: blur(2px);
-                width: 100%;
-                background-image: url(images/walled-garden2.jpg);
-                background-size: cover;
-                background-position: center;
-                display: block;
-                min-height: 350px;
-                z-index: -1;
-            }
-            #header-text {
-                font-size: 4em;
-                color: black;
-            }
-            #content {
-                text-align: center;
-            }
-            .img-caption {
-                text-align:center;
-                font-size: 1.1em;
-            }
-            .event-img {
-                margin-top: 10px;
-                text-align: center;
-                max-height: 300px;
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .infobox {
-                font-size: 1.2em;
-                width: 70%;
-                text-align: justify;
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-            }
-        </style>
+        <link rel="stylesheet" href="app.css">
         <script>
             $(function() {
                 // Add smooth scrolling to all links inside a navbar
@@ -144,9 +91,42 @@
             <h1 id="header-text">Jenny &amp; Ryan</h1>
             <div><i>Help us celebrate our wedding!</i></div>
             <br/>
-            <img src="/images/us1.jpeg" width="40%" style="text-align:center;border: 1px black solid;" />
-            <img src="/images/us2.jpg" width="40%" style="text-align:center;border: 1px black solid;" />
+
         </div>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-xs-12" style="height: 405px;">
+                    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                        <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+                            <img ng-src="{{slide.image}}" style="max-height:400px;">
+<!--
+                            <div class="carousel-caption">
+                                <h4>Slide {{slide.id}}</h4>
+                                <p>{{slide.text}}</p>
+                            </div>
+-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--
+<div masonry 
+masonry-options="{fitWidth:true}" 
+reload-on-resize
+reload-on-show
+prepend="true"
+preserve-order
+class="masonry-container">
+<div class="masonry-brick img-div" ng-repeat="brick in imageSpec">
+<img ng-src="{{brick.src}}"
+ng-controller="WeddingImgCtrl"
+ng-click="click()">
+</div>
+</div>
+-->
         <div id="content">
             <div id="{{sectionIds[0]}}" class="wedding-heading container"> <!-- Details -->
                 <h1>{{sections[0]}}</h1>

@@ -1,0 +1,98 @@
+/* FONTS */
+h1, h2, h3 {
+    font-family: 'Flamenco', Georgia, Times, serif;
+}
+body {
+    font-family: 'Asap', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 25px;
+}
+
+/* EVERYTHING ELSE */
+body {
+    position: relative;
+    background: url(/images/fabric_of_squares_gray.png) repeat 0 0;
+}
+
+h1 {
+    font-size: 4em;
+}
+h2 {
+    font-size: 2em;
+}
+
+.wedding-heading {
+    padding-top: 50px;
+}
+#section1, #section2, #header-container {
+    padding-top:50px;
+}
+#header-container {
+    text-align: center;
+}
+#header-img {
+    position: absolute;
+    top: 50px;
+    filter: blur(2px);
+    width: 100%;
+    background-image: url(images/walled-garden2.jpg);
+    background-size: cover;
+    background-position: center;
+    display: block;
+    min-height: 350px;
+    z-index: -1;
+}
+#header-text {
+    font-size: 4em;
+    color: black;
+}
+#content {
+    text-align: center;
+}
+.img-caption {
+    text-align:center;
+    font-size: 1.1em;
+}
+.event-img {
+    margin-top: 10px;
+    text-align: center;
+    max-height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.infobox {
+    font-size: 1.2em;
+    width: 70%;
+    text-align: justify;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nopadding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.masonry-brick {
+    display: none;
+}
+
+.masonry-brick.loaded {
+    display: block;
+}
+.masonry-container {
+    margin: 0 auto;
+}
+
+.img-div {
+    float: left;
+/*    width: 230px;*/
+    margin: 5px;
+    font-size: 0;
+}
+
+.carousel-indicators li { 
+    visibility: hidden; 
+}
