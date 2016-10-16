@@ -1,11 +1,15 @@
 /* FONTS */
-h1, h2, h3 {
+h1, h2, h3, .fancy {
     font-family: 'Flamenco', Georgia, Times, serif;
 }
 body {
     font-family: 'Asap', Helvetica, Arial, sans-serif;
     font-size: 15px;
     line-height: 25px;
+}
+
+a:hover {
+    text-decoration:none;
 }
 
 /* EVERYTHING ELSE */
@@ -86,9 +90,7 @@ h2 {
     margin: 0 auto;
 }
 
-.img-div {
-    float: left;
-/*    width: 230px;*/
+.masonry-img {
     margin: 5px;
     font-size: 0;
 }

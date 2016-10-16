@@ -1,0 +1,147 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#top" du-smooth-scroll><span class="glyphicon glyphicon-home"></span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li ng-repeat="section in sections" du-scrollspy="{{sectionIds[$index]}}">
+                    <a ng-href="#{{sectionIds[$index]}}" du-smooth-scroll>
+                        {{section}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="header-container">
+    <h1 id="header-text">Jenny &amp; Ryan</h1>
+    <div><i>Help us celebrate our wedding!</i></div>
+    <br/>
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 col-xs-12" >
+            <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+                    <img ng-src="{{slide.src}}" width="100%">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-3" style="text-align:right;">
+            <h3><a href="#/us">More Pictures...</a></h3>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div id="{{sectionIds[0]}}" class="wedding-heading container"> <!-- Details -->
+        <h1>{{sections[0]}}</h1>
+        <p class="infobox">
+            Our wedding will be on <b>July 22, 2017</b>.
+            We will have a short ceremony at the <b>Walled Garden at Mellon Park</b> starting at <b>4:00pm</b>.
+            A reception at <b>The Union Project</b> will follow, beginning at <b>5:00pm</b>.
+        </p>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="/images/walled-garden.jpg" class="event-img img-responsive img-rounded img-center" />
+                <div class="img-caption">
+                    <div>Walled Garden @ Mellon Park </div>
+                    <div>
+                        <i>6227 Mellon Park Road, Pittsburgh, PA</i>
+                        <a href="https://goo.gl/maps/6F7vs4qW14k" target="_blank"><span class="glyphicon glyphicon-map-marker"></span></a>
+                    </div>
+                    <div>
+                        Street parking available on Beechwood
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <img src="/images/unionproject.jpg" class="event-img img-responsive img-rounded img-center" />
+                <div class="img-caption">
+                    <div>The Union Project</div>
+                    <div>
+                        <i>801 N Negley Ave, Pittsburgh, PA</i>
+                        <a href="https://goo.gl/maps/YZn8dewsvMz" target="_blank"><span class="glyphicon glyphicon-map-marker"></span></a>
+                    </div>
+                    <div>
+                        Street parking available on Stanton &amp; Negley
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>(More)</h2>
+        <div class="infobox">
+            <ul>
+                <li>The Walled Garden has a lot of grass, and Pittsburgh in July can be rainy, so those-in-heels may want to take notice.</li>
+                <li>The Union Project does not have air conditioning and Pittsburgh in July can get hot, so feel free to bring a change of clothes if you'd feel more comfortable.</li>
+                <li>If it's sunny or there's light rain, we'll keep the ceremony outisde. If it's heavy rain, we will head to the Union Project for the ceremony and stay for the reception.</li>
+                <li>To get between the ceremony and reception, we're hoping Uber and locals who are willing to share their seats will be enough. The two spots are about 2 miles apart.</li>
+                <li>We will have vegetarian and gluten-free food options.</li>
+                <li>There will be an open bar.</li>
+            </ul>
+        </div>
+    </div>
+    <div id="{{sectionIds[1]}}" class="wedding-heading container"> <!-- Travel -->
+        <h1>{{sections[1]}}</h1>
+        <div class="infobox">
+            If you're not local, don't worry!
+            <h3>By Air</h3>
+            The <a href="" target="_blank">Pittsburgh "International" Airport</a> (yeah, we go to Canada. And maybe Paris?) is about twenty minutes outside the city. You can catch an Uber / Lyft / cab to the hotel. The 28X bus also stops at the aiport and drops off Downtown and in Oakland.
+            <h3>By Train</h3>
+            Our <a href="" target="_blank">Amtrak station</a> is located downtown and connects to the Pennsylvanian line (Philadelphia, NYC) and the Capital Limited line (Chicago, DC). It's very relaxing.
+            <h3>By Car</h3>
+            Well, we're not sure how helpful we can be here, but if you do drive, make sure you head through the Fort Pitt Tunnel. It's the <a href="https://youtu.be/Ci_rwQoRaxk?t=52s" target="_blank">best intro</a> to the city.
+            <h3>Staying in PGH</h3>
+            We've reserved a block of rooms at <a href="" target="_blank">Such &amp; Such Hotel</a>, right around the corner from The Union Project. Ace Hotel? Hotel Indigo? SpringHill Suites?
+        </div>
+    </div>
+
+    <div id="{{sectionIds[2]}}" class="wedding-heading container"> <!-- Burgh -->
+        <h1>{{sections[2]}}</h1>
+        <div class="infobox">
+            Here's some of our favorite things to do in the city.
+            <h3>Foods</h3>
+            <ul>
+                <li>D's Six Pack and Dogz</li>
+                <li>Nikki's Thai Kitchen</li>
+                <li>Pamela's Dinner</li>
+            </ul>
+            <h3>Drinks</h3>
+            <ul>
+                <li>Yummy drinks</li>
+            </ul>
+            <h3>Places</h3>
+            <ul>
+                <li>Natural History Museum</li>
+                <li>The Warhol</li>
+                <li>Aviary</li>
+                <li>Mattress Factory</li>
+                <li>Frick Park</li>
+            </ul>
+        </div>
+    </div>
+    <div id="{{sectionIds[3]}}" class="wedding-heading container"> <!-- Registry -->
+        <h1>{{sections[3]}}</h1>
+        <div class="infobox">
+            We're registered on Amazon. We'd also be plenty happy with cash. But really, we just want you to be there (aww).
+        </div>
+    </div>
+    <div id="{{sectionIds[4]}}" class="wedding-heading container"> <!-- RSVP -->
+        <h1>{{sections[4]}}</h1>
+        <div class="infobox">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd9f8CF4u0PBccdH8Bt94GPUw4tMJ_8mrHiSf7u0g30gKBxkQ/viewform?embedded=true" width="760" height="1400" frameborder="0" marginheight="0" marginwidth="0">Loading RSVP...</iframe>
+        </div>
+    </div>
+</div>

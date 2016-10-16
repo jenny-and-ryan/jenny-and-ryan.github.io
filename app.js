@@ -1,12 +1,56 @@
-var app = angular.module('wedding', ['ngAnimate', 'ngSanitize', 'wu.masonry', 'ui.bootstrap']);
+var app = angular.module('wedding', ['ngAnimate', 
+                                     'ngRoute',
+                                     'ngSanitize',
+                                     'duScroll',
+                                     'wu.masonry', 
+                                     'ui.bootstrap']);
 
 app.controller('WeddingCtrl', WeddingCtrl);
+app.controller('WeddingImagesCtrl', WeddingImagesCtrl);
 
-WeddingCtrl.$inject = ['$scope', '$timeout'];
-function WeddingCtrl($scope, $timeout)
+app.config(['$routeProvider', function($routeProvider) {
+    $routeProvider
+        .when('/', {
+        templateUrl: 'main.html',
+        controller: 'WeddingCtrl'
+    })
+        .when('/us', {
+        templateUrl: 'wedding-images.html',
+        controller: 'WeddingImagesCtrl'
+    })
+        .otherwise({
+        redirectTo: '/'
+    });
+}]);
+
+app.service('WeddingService', function() {
+    var imageIdx = 0;
+    var MAIN_IMG_COUNT = 7;
+    var OVERFLOW_IMG_COUNT = 12;
+
+    var idx = 0;
+
+    var makeImgList = function(prefix, count)
+    {
+        var arr = [];
+        for (var i=1; i<=count; i++)
+        {
+            arr.push({
+                src: '/images/' + prefix + i + '.jpg',
+                id: idx++
+            });
+        }
+        return arr;
+    }
+
+    this.MAIN_IMAGES = makeImgList('us-main', MAIN_IMG_COUNT);
+    var overflowImages = makeImgList('us-overflow', OVERFLOW_IMG_COUNT);
+    this.OVERFLOW_IMAGES = this.MAIN_IMAGES.concat(overflowImages);
+});
+
+WeddingCtrl.$inject = ['$scope', '$timeout', 'WeddingService'];
+function WeddingCtrl($scope, $timeout, WeddingService)
 {
-    $scope.foo = 'hi there'; 
-
     $scope.sections = [
         'Event',
         'Travel',
@@ -19,71 +63,30 @@ function WeddingCtrl($scope, $timeout)
         return sectionName.toLowerCase().replace(/ /g, ''); 
     });
 
-    var UID = 0;
-    $scope.makeImg = function(size, color)
-    {
-        UID++;
-
-        return {
-            '_uid': UID,
-            'src': 'http://placehold.it/'+size+'/'+color
-        }
-    }
-
-    $scope.imageSpec = [
-        $scope.makeImg('350x250', '123456'),
-        $scope.makeImg('350x251', 'abcdef'),
-        $scope.makeImg('350x252', 'abcabc'),
-        $scope.makeImg('350x253', '123123'),
-        $scope.makeImg('350x254', '012301'),
-        $scope.makeImg('350x255', 'fffeee'),
-    ];
-
     $scope.myInterval = 5000;
     $scope.noWrapSlides = false;
     $scope.active = 0;
 
-    var slides = $scope.slides = [];
-    var currIndex = 0;
-
-    $scope.addSlide = function() {
-        var newWidth = 900 + slides.length + 1;
-        slides.push({
-            image: '//unsplash.it/' + newWidth + '/400',
-            id: currIndex++
-        });
-    };
-    
-    slides.push({
-        image: '/images/us1.jpeg',
-        id: currIndex++
-    });
-    slides.push({
-        image: '/images/us2.jpg',
-        id: currIndex++
-    });
-
-    for (var i = 0; i < 10; i++) {
-        $scope.addSlide();
-    }
+    $scope.slides = WeddingService.MAIN_IMAGES;
 };
 
-app.controller('WeddingImgCtrl', function($scope) {
-    $scope.click = function()
-    {
-        var thisUID = $scope.brick._uid;
-        for (var i=0; i<$scope.imageSpec.length; i++)
-        {
-            if ($scope.imageSpec[i]._uid == thisUID)
-            {
-                var newImg = $scope.makeImg('350', 'eeefff');
-                $scope.imageSpec.splice(i, 1, newImg);
-                break;
-            }
+WeddingImagesCtrl.$inject = ['$scope', 'WeddingService']
+function WeddingImagesCtrl($scope, WeddingService) {
+    $scope.images = angular.copy(WeddingService.OVERFLOW_IMAGES);
+    shuffleArray($scope.images);
+
+    /**
+     * Randomize array element order in-place.
+     * Using Durstenfeld shuffle algorithm.
+     * https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+     */
+    function shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
         }
-        for (var i=0; i<$scope.imageSpec.length; i++)
-        {
-            console.log(i + ' ' + JSON.stringify($scope.imageSpec[i]));
-        }
+        return array;
     }
-});
+};

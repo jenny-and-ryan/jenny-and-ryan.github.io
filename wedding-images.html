@@ -1,0 +1,16 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/" du-smooth-scroll>
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+<div masonry 
+     masonry-options="{fitWidth:true}" 
+     class="masonry-container wedding-heading">
+    <div class="masonry-brick" ng-repeat="image in images">
+        <img class="masonry-img" ng-src="{{image.src}}" style="max-width:300px" >
+    </div>
+</div>
