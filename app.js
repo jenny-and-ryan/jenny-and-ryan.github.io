@@ -26,7 +26,7 @@ app.config(['$routeProvider', function($routeProvider) {
 app.service('WeddingService', function() {
     var imageIdx = 0;
     var MAIN_IMG_COUNT = 7;
-    var OVERFLOW_IMG_COUNT = 12;
+    var OVERFLOW_IMG_COUNT = 11;
 
     var idx = 0;
 
