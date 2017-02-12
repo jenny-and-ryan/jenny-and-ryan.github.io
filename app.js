@@ -55,8 +55,8 @@ function WeddingCtrl($scope, $timeout, WeddingService)
         'Event',
         'Travel',
         'The Burgh',
-        'Registry',
-        'RSVP'
+//        'Registry',
+//        'RSVP'
     ]
 
     $scope.sectionIds = $scope.sections.map(function(sectionName) {
