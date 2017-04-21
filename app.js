@@ -52,11 +52,11 @@ WeddingCtrl.$inject = ['$scope', '$timeout', 'WeddingService'];
 function WeddingCtrl($scope, $timeout, WeddingService)
 {
     $scope.sections = [
-        'Event',
+        'Events',
         'Travel',
         'The Burgh',
-//        'Registry',
-//        'RSVP'
+        'Registry',
+        'RSVP'
     ]
 
     $scope.sectionIds = $scope.sections.map(function(sectionName) {
