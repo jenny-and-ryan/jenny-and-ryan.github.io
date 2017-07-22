@@ -8,14 +8,16 @@ var app = angular.module('wedding', ['ngAnimate',
 app.controller('WeddingCtrl', WeddingCtrl);
 app.controller('WeddingImagesCtrl', WeddingImagesCtrl);
 
+var timestamp = (new Date()).getTime();
+
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
         .when('/', {
-        templateUrl: 'main.html',
+        templateUrl: 'main.html?t=' + timestamp,
         controller: 'WeddingCtrl'
     })
         .when('/us', {
-        templateUrl: 'wedding-images.html',
+        templateUrl: 'wedding-images.html?t=' + timestamp,
         controller: 'WeddingImagesCtrl'
     })
         .otherwise({
